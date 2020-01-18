@@ -1,19 +1,21 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "./DogList.css";
 class DogList extends Component {
   render() {
     return (
       <div className="DogList">
         <h1 className="display-1 text-center">Dog List!</h1>
-        <div class="container">
-          <div class="row">
-            {this.props.dogs.map(dog => (
-              <div class="Dog col-lg-4 text-center" key={dog.name}>
-                <img src={dog.src} alt={dog.name}></img>
-                <h3>{dog.name}</h3>
-              </div>
-            ))}
-          </div>
+        <div className="row">
+          {this.props.dogs.map(dog => (
+            <div className="Dog col-lg-4 text-center" key={dog.name}>
+              <img src={dog.src} alt={dog.name}></img>
+              <h3>
+                <Link to={`/dogs/${dog.name}`}>{dog.name}</Link>
+              </h3>
+            </div>
+          ))}
         </div>
       </div>
     );

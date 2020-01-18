@@ -4,10 +4,8 @@ import whiskey from "./images/whiskey.jpg";
 import hazel from "./images/hazel.jpg";
 import tubby from "./images/tubby.jpg";
 import Navbar from "./Navbar";
-
+import Routes from "./Routes";
 import "./App.css";
-import DogList from "./DogList";
-import DogDetials from "./DogDetials";
 
 class App extends Component {
   static defaultProps = {
@@ -45,24 +43,13 @@ class App extends Component {
     ]
   };
   render() {
-    const getDog = props => {
-      let name = props.match.params.name;
-      let currentDog = this.props.dogs.find(
-        d => d.name.toLowerCase() === name.toLowerCase()
-      );
-      return <DogDetials {...props} dog={currentDog} />;
-    };
     return (
-      <div className="App">
+      <div>
         <Navbar dogs={this.props.dogs} />
-        <Switch>
-          <Route
-            exact
-            path="/dogs"
-            render={() => <DogList dogs={this.props.dogs} />}
-          />
-          <Route exact path="/dogs/:name" render={getDog} />
-        </Switch>
+        {/* 把原本在doglisty和dogdetials中的div classname=‘container’放到这里，这样可以减少代码重复 */}
+        <div className="container">
+          <Routes dogs={this.props.dogs} />
+        </div>
       </div>
     );
   }

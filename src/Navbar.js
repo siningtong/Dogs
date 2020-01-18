@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const dogLinks = this.props.dogs.map((d, i) => (
       <li className="nav-item" key={d.name}>
