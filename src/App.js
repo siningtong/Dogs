@@ -7,6 +7,7 @@ import Nav from "./Nav";
 
 import "./App.css";
 import DogList from "./DogList";
+import DogDetials from "./DogDetials";
 
 class App extends Component {
   static defaultProps = {
@@ -44,6 +45,13 @@ class App extends Component {
     ]
   };
   render() {
+    const getDog = props => {
+      let name = props.match.params.name;
+      let currentDog = this.props.dogs.find(
+        d => d.name.toLowerCase() === name.toLowerCase()
+      );
+      return <DogDetials {...props} dog={currentDog} />;
+    };
     return (
       <div className="App">
         <Nav />
@@ -53,6 +61,7 @@ class App extends Component {
             path="/dogs"
             render={() => <DogList dogs={this.props.dogs} />}
           />
+          <Route exact path="/dogs/:name" render={getDog} />
         </Switch>
       </div>
     );
