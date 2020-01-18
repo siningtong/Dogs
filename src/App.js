@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import whiskey from "./images/whiskey.jpg";
 import hazel from "./images/hazel.jpg";
 import tubby from "./images/tubby.jpg";
-import Nav from "./Nav";
+import Navbar from "./Navbar";
 
 import "./App.css";
 import DogList from "./DogList";
@@ -54,7 +54,7 @@ class App extends Component {
     };
     return (
       <div className="App">
-        <Nav />
+        <Navbar dogs={this.props.dogs} />
         <Switch>
           <Route
             exact
